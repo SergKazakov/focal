@@ -1,14 +1,17 @@
 //fonts
 $browser-context: 16;
-$base-font-family: 'Open Sans', sans-serif;
-$light:        300;
+$base-font-family: 'Roboto', sans-serif;
 $normal:       400;
-$semibold:     600;
+$medium:       500;
 $bold:         700;
-$extrabold:    800;
-$base-color: #384d5c;
+$base-color: #919191;
 
 
 //grid
-$container-width: 1170px;
-$container-gutter: 15px;
+$container-width: 1180px;
+$container-gutter: 10px;
+
+$transition-duration: 300ms;
+
+$p-line-height: 1.667;
+$p-color: #919191;

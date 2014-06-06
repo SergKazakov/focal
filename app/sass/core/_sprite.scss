@@ -1,0 +1,97 @@
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+*/
+$graphic-design-x: 64px;
+$graphic-design-y: 0px;
+$graphic-design-offset-x: -64px;
+$graphic-design-offset-y: 0px;
+$graphic-design-width: 31px;
+$graphic-design-height: 45px;
+$graphic-design-total-width: 151px;
+$graphic-design-total-height: 100px;
+$graphic-design-image: 'sprite.png';
+$graphic-design: 64px 0px -64px 0px 31px 45px 151px 100px 'sprite.png';
+$magnifier-x: 0px;
+$magnifier-y: 0px;
+$magnifier-offset-x: 0px;
+$magnifier-offset-y: 0px;
+$magnifier-width: 49px;
+$magnifier-height: 49px;
+$magnifier-total-width: 151px;
+$magnifier-total-height: 100px;
+$magnifier-image: 'sprite.png';
+$magnifier: 0px 0px 0px 0px 49px 49px 151px 100px 'sprite.png';
+$online-marketing-x: 0px;
+$online-marketing-y: 64px;
+$online-marketing-offset-x: 0px;
+$online-marketing-offset-y: -64px;
+$online-marketing-width: 36px;
+$online-marketing-height: 36px;
+$online-marketing-total-width: 151px;
+$online-marketing-total-height: 100px;
+$online-marketing-image: 'sprite.png';
+$online-marketing: 0px 64px 0px -64px 36px 36px 151px 100px 'sprite.png';
+$seo-x: 51px;
+$seo-y: 64px;
+$seo-offset-x: -51px;
+$seo-offset-y: -64px;
+$seo-width: 37px;
+$seo-height: 36px;
+$seo-total-width: 151px;
+$seo-total-height: 100px;
+$seo-image: 'sprite.png';
+$seo: 51px 64px -51px -64px 37px 36px 151px 100px 'sprite.png';
+$web-design-x: 110px;
+$web-design-y: 0px;
+$web-design-offset-x: -110px;
+$web-design-offset-y: 0px;
+$web-design-width: 41px;
+$web-design-height: 41px;
+$web-design-total-width: 151px;
+$web-design-total-height: 100px;
+$web-design-image: 'sprite.png';
+$web-design: 110px 0px -110px 0px 41px 41px 151px 100px 'sprite.png';
+
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+*/
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(../img/#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}

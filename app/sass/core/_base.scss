@@ -4,6 +4,7 @@
 
 body {
     font: #{$browser-context}px / 1.2 $base-font-family;
+    color: $base-color;
 }
 
 ul {
@@ -16,11 +17,38 @@ a {
     text-decoration: none;
 }
 
+p{
+    color: $p-color;
+    line-height: $p-line-height;
+    font-weight: $normal;
+    font-size: em(18);
+    &+&{
+        margin-top: 27px;
+    }
+}
 
 input {
     border: 0;
     font-family: $base-font-family;
     &:focus {
         outline: 0;
+    }
+}
+
+textarea{
+    border: 0;
+    &:focus{
+        outline: none;
+    }
+}
+
+blockquote{
+    color:  #919191;
+    font-size: em(24); 
+    font-weight: $normal;
+    line-height: 1.5;
+    font-style: italic;
+    &:before, &:after{
+        content: '"';
     }
 }
