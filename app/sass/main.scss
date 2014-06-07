@@ -6,6 +6,7 @@
 @import "core/sprite";
 @import "vendor/fonts";
 @import "vendor/responsive-nav";
+@import "vendor/flexslider";
 
 // buttons
 
@@ -18,6 +19,7 @@
 	text-transform: uppercase;
 	background-color: transparent;
 	cursor: pointer;
+	@include transition(color $transition-duration, background-color $transition-duration);
 }
 
 .btn--bordered{
@@ -236,9 +238,8 @@ $details: (web: $web-design, graphic: $graphic-design, market: $online-marketing
 		float: left;
 		width: percentage(550px/ $container-width);
 		&+&{
-			margin-left: percentage(90px/ $container-width);
-			margin-right: percentage(-10px/ $container-width);
-			margin-top: -36px;
+			margin:-36px 0 0 percentage(80px/ $container-width);
+			padding-left: percentage(10px/ $container-width);
 		}
 		@include max-screen(768px){
 			width: 100%;
@@ -252,7 +253,7 @@ $details: (web: $web-design, graphic: $graphic-design, market: $online-marketing
 .progressbar{
 	background: #f2f2f1;
 	height: 30px;
-	margin: 0 -8px 34px 0;
+	margin: 0 0 34px 0;
 	@include max-screen(768px){
 		margin-right: 0;
 	}
@@ -288,13 +289,11 @@ $details: (web: $web-design, graphic: $graphic-design, market: $online-marketing
 	}
 	&__inner{
 		padding: 74px $container-gutter 98px; 
+		@extend %container;
 	}
 	&-subtitle{
 		margin-top: 40px;
-		// padding: 0 405px; 
-		// @include max-screen(992px){
-		// 	padding: 0; 
-		// }
+		padding: 0 percentage(55px/ $container-width); 
 	}
 }
 
@@ -329,9 +328,22 @@ $details: (web: $web-design, graphic: $graphic-design, market: $online-marketing
 	font-size: em(18); 
 	font-weight: $medium;
 	line-height: 1.667;
+	@include transition(color $transition-duration);
+	@include max-screen(480px){
+		display: block;
+	}
 	&:hover{
 		text-decoration: underline;
 		color: darken(#919191, 20%);
+	}
+	&:after{
+		content: '/';
+		font-weight: $normal;
+		color: #919191;
+		margin-left: 5px;
+		@include max-screen(480px){
+			display: none;
+		}
 	}
 }
 
@@ -365,7 +377,7 @@ $details: (web: $web-design, graphic: $graphic-design, market: $online-marketing
 	&__inner{
 		@extend %container;
 		text-align: center;
-		padding: 68px $container-gutter 99px; 
+		padding: 92px $container-gutter 99px; 
 	}
 }
 
@@ -391,6 +403,11 @@ $details: (web: $web-design, graphic: $graphic-design, market: $online-marketing
 		width: 10px;
 		height: 10px;
 		border: 2px solid #2ecc71;
+		@include transition(background-color $transition-duration);
+		@include max-screen(768px){
+			width: 15px;
+			height: 15px;
+		}
 		&+&{
 			margin-left: 5px;
 		}
@@ -502,6 +519,7 @@ $details: (web: $web-design, graphic: $graphic-design, market: $online-marketing
 	&__item{
 		background-color:  #4b5456;
 		@include border-radius(50%);
+		@include transition(color $transition-duration);
 		width: 34px;
 		height: 34px;
 		display: inline-block;
@@ -582,6 +600,10 @@ $details: (web: $web-design, graphic: $graphic-design, market: $online-marketing
 	&-textarea{
 		background:#4b5456;
 		padding: 17px 5px; 
+		@include transition(background-color $transition-duration);
+		&:hover, &:focus{
+			background: darken(#4b5456, 5%);
+		}
 	}
 	&-textarea{
 		resize: none;
@@ -608,4 +630,93 @@ $details: (web: $web-design, graphic: $graphic-design, market: $online-marketing
     & + & {
         margin-top: 4px;
     }
+}
+
+//flexslider
+
+.flexslider{
+	margin: 0;
+	background-color: transparent;
+	border: 0;
+	@include border-radius(0);
+	@include box-shadow(none);
+}
+
+.slides{
+	&__inner{
+		position: relative;
+	}
+}
+
+.slider{
+	&-content{
+		position: absolute;
+		left: 0;
+		right: 0;
+		text-align: center;
+		top: percentage(502px/ $container-width);
+		padding: 0 $container-gutter;
+		@include max-screen(768px){
+			top: 20%;
+		}
+	}
+	&-caption{
+		color:  #fff;
+		font-size: em(60); 
+		font-weight: $bold;
+		line-height: 0.4;
+		text-transform: uppercase;
+		border-top: 2px solid #fff;
+		border-bottom: 2px solid #fff;
+		padding: 29px 0;
+		max-width: 751px;
+		margin-left: auto;
+		margin-right: auto; 
+		@include max-screen(992px){
+			font-size: em(40);
+			max-width: 503px;
+		}
+		@include max-screen(768px){
+			font-size: em(20);
+			padding: 20px 0; 
+			max-width: 251px
+		}
+	}
+	&-btn{
+		@include max-screen(768px){
+			padding: 10px 20px;
+			font-size: em(16); 
+		}
+		@include max-screen(480px){
+			padding: 10px;
+			font-size: em(14); 
+		}
+	}
+}
+
+.touch .flex-control-nav{
+	display: none;
+}
+
+.flex-control-nav{
+	width: 10px;
+	right: 19%;
+	bottom: 20%;
+	z-index: 2;
+	li{
+		display: block;
+		margin: 0;
+		a{
+			width: 10px;
+			height: 10px;
+			border: 2px solid #fff;
+			background: transparent;
+			@include border-radius(50%);
+			@include box-shadow(none);
+			margin-top: 10px;
+			&:hover, &.flex-active{
+				background:#fff;
+			}
+		}
+	}
 }

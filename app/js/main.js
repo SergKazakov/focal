@@ -18,4 +18,9 @@ $(function() {
 
     responsiveNav(".nav-collapse");
     $('.nav-toggle').html('<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>');
+
+    $('.flexslider').flexslider({
+        'animation': 'fade',
+        'directionNav': false,
+    });
 });

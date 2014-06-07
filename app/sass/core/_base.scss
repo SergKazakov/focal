@@ -48,6 +48,7 @@ blockquote{
     font-weight: $normal;
     line-height: 1.5;
     font-style: italic;
+    margin: 0;
     &:before, &:after{
         content: '"';
     }

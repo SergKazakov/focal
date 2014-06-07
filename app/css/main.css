@@ -325,7 +325,7 @@ td, th {
 .main-nav__inner:after, .about-me-top__inner:after, .about-me__inner:after, .about-me-details:after, .skills-container:after, .education-container:after, .gallery:after, .contact__inner:after {
   clear: both; }
 
-.main-nav__inner, .about-me-top__inner, .about-me__inner, .skills__inner, .education__inner, .testimonials__inner, .portfolio__inner, .footer__inner, .contact__inner {
+.main-nav__inner, .about-me-top__inner, .about-me__inner, .skills__inner, .resume__inner, .education__inner, .testimonials__inner, .portfolio__inner, .footer__inner, .contact__inner {
   max-width: 1200px;
   margin: 0 auto; }
 
@@ -370,7 +370,8 @@ blockquote {
   font-size: 1.5em;
   font-weight: 400;
   line-height: 1.5;
-  font-style: italic; }
+  font-style: italic;
+  margin: 0; }
 blockquote:before, blockquote:after {
   content: '"'; }
 
@@ -495,6 +496,258 @@ The provided mixins are intended to be used with the array-like variables
 
   .nav-toggle {
     display: none; } }
+/*
+ * jQuery FlexSlider v2.2.0
+ * http://www.woothemes.com/flexslider/
+ *
+ * Copyright 2012 WooThemes
+ * Free to use under the GPLv2 license.
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * Contributing author: Tyler Smith (@mbmufffin)
+ */
+/* Browser Resets
+*********************************/
+.flex-container a:active, .flexslider a:active, .flex-container a:focus, .flexslider a:focus {
+  outline: none; }
+
+.slides, .flex-control-nav, .flex-direction-nav {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+/* Icon Fonts
+*********************************/
+/* Font-face Icons */
+@font-face {
+  font-family: 'flexslider-icon';
+  src: url("fonts/flexslider-icon.eot");
+  src: url("fonts/flexslider-icon.eot?#iefix") format("embedded-opentype"), url("fonts/flexslider-icon.woff") format("woff"), url("fonts/flexslider-icon.ttf") format("truetype"), url("fonts/flexslider-icon.svg#flexslider-icon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+/* FlexSlider Necessary Styles
+*********************************/
+.flexslider {
+  margin: 0;
+  padding: 0; }
+
+.flexslider .slides > li {
+  display: none;
+  -webkit-backface-visibility: hidden; }
+
+/* Hide the slides before the JS is loaded. Avoids image jumping */
+.flexslider .slides img {
+  width: 100%;
+  display: block; }
+
+.flex-pauseplay span {
+  text-transform: capitalize; }
+
+/* Clearfix for the .slides element */
+.slides:after {
+  content: "\0020";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0; }
+
+html[xmlns] .slides {
+  display: block; }
+
+* html .slides {
+  height: 1%; }
+
+/* No JavaScript Fallback */
+/* If you are not using another script, such as Modernizr, make sure you
+ * include js that eliminates this class on page load */
+.no-js .slides > li:first-child {
+  display: block; }
+
+/* FlexSlider Default Theme
+*********************************/
+.flexslider {
+  margin: 0 0 60px;
+  background: #fff;
+  border: 4px solid #fff;
+  position: relative;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  zoom: 1; }
+
+.flex-viewport {
+  max-height: 2000px;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease; }
+
+.loading .flex-viewport {
+  max-height: 300px; }
+
+.flexslider .slides {
+  zoom: 1; }
+
+.carousel li {
+  margin-right: 5px; }
+
+/* Direction Nav */
+.flex-direction-nav {
+  *height: 0; }
+
+.flex-direction-nav a {
+  text-decoration: none;
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0;
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  overflow: hidden;
+  opacity: 0;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.8);
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  transition: all .3s ease; }
+
+.flex-direction-nav .flex-prev {
+  left: -50px; }
+
+.flex-direction-nav .flex-next {
+  right: -50px;
+  text-align: right; }
+
+.flexslider:hover .flex-prev {
+  opacity: 0.7;
+  left: 10px; }
+
+.flexslider:hover .flex-next {
+  opacity: 0.7;
+  right: 10px; }
+
+.flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover {
+  opacity: 1; }
+
+.flex-direction-nav .flex-disabled {
+  opacity: 0 !important;
+  filter: alpha(opacity=0);
+  cursor: default; }
+
+.flex-direction-nav a:before {
+  font-family: "flexslider-icon";
+  font-size: 40px;
+  line-height: 1;
+  display: inline-block;
+  content: '\f001'; }
+
+.flex-direction-nav a.flex-next:before {
+  content: '\f002'; }
+
+/* Pause/Play */
+.flex-pauseplay a {
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  opacity: 0.8;
+  z-index: 10;
+  overflow: hidden;
+  cursor: pointer;
+  color: #000; }
+
+.flex-pauseplay a:before {
+  font-family: "flexslider-icon";
+  font-size: 20px;
+  display: inline-block;
+  content: '\f004'; }
+
+.flex-pauseplay a:hover {
+  opacity: 1; }
+
+.flex-pauseplay a.flex-play:before {
+  content: '\f003'; }
+
+/* Control Nav */
+.flex-control-nav {
+  width: 100%;
+  position: absolute;
+  bottom: -40px;
+  text-align: center; }
+
+.flex-control-nav li {
+  margin: 0 6px;
+  display: inline-block;
+  zoom: 1;
+  *display: inline; }
+
+.flex-control-paging li a {
+  width: 11px;
+  height: 11px;
+  display: block;
+  background: #666;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  text-indent: -9999px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3); }
+
+.flex-control-paging li a:hover {
+  background: #333;
+  background: rgba(0, 0, 0, 0.7); }
+
+.flex-control-paging li a.flex-active {
+  background: #000;
+  background: rgba(0, 0, 0, 0.9);
+  cursor: default; }
+
+.flex-control-thumbs {
+  margin: 5px 0 0;
+  position: static;
+  overflow: hidden; }
+
+.flex-control-thumbs li {
+  width: 25%;
+  float: left;
+  margin: 0; }
+
+.flex-control-thumbs img {
+  width: 100%;
+  display: block;
+  opacity: .7;
+  cursor: pointer; }
+
+.flex-control-thumbs img:hover {
+  opacity: 1; }
+
+.flex-control-thumbs .flex-active {
+  opacity: 1;
+  cursor: default; }
+
+@media screen and (max-width: 860px) {
+  .flex-direction-nav .flex-prev {
+    opacity: 1;
+    left: 10px; }
+
+  .flex-direction-nav .flex-next {
+    opacity: 1;
+    right: 10px; } }
 .btn {
   display: inline-block;
   font-size: 1.125em;
@@ -503,7 +756,11 @@ The provided mixins are intended to be used with the array-like variables
   padding: 15px 35px;
   text-transform: uppercase;
   background-color: transparent;
-  cursor: pointer; }
+  cursor: pointer;
+  -webkit-transition: color 300ms, background-color 300ms;
+  -moz-transition: color 300ms, background-color 300ms;
+  -spec-transition: color 300ms, background-color 300ms;
+  transition: color 300ms, background-color 300ms; }
 
 .btn--bordered {
   border: 2px solid; }
@@ -693,9 +950,8 @@ The provided mixins are intended to be used with the array-like variables
   float: left;
   width: 46.61017%; }
 .skills__item + .skills__item {
-  margin-left: 7.62712%;
-  margin-right: -0.84746%;
-  margin-top: -36px; }
+  margin: -36px 0 0 6.77966%;
+  padding-left: 0.84746%; }
 @media screen and (max-width: 768px) {
   .skills__item {
     width: 100%; }
@@ -705,7 +961,7 @@ The provided mixins are intended to be used with the array-like variables
 .progressbar {
   background: #f2f2f1;
   height: 30px;
-  margin: 0 -8px 34px 0; }
+  margin: 0 0 34px 0; }
 @media screen and (max-width: 768px) {
   .progressbar {
     margin-right: 0; } }
@@ -738,7 +994,8 @@ The provided mixins are intended to be used with the array-like variables
 .resume__inner {
   padding: 74px 10px 98px; }
 .resume-subtitle {
-  margin-top: 40px; }
+  margin-top: 40px;
+  padding: 0 4.66102%; }
 
 .education__inner {
   padding: 75px 10px 28px; }
@@ -759,10 +1016,25 @@ The provided mixins are intended to be used with the array-like variables
   color: #919191;
   font-size: 1.125em;
   font-weight: 500;
-  line-height: 1.667; }
+  line-height: 1.667;
+  -webkit-transition: color 300ms;
+  -moz-transition: color 300ms;
+  -spec-transition: color 300ms;
+  transition: color 300ms; }
+@media screen and (max-width: 480px) {
+  .place {
+    display: block; } }
 .place:hover {
   text-decoration: underline;
   color: #5e5e5e; }
+.place:after {
+  content: '/';
+  font-weight: 400;
+  color: #919191;
+  margin-left: 5px; }
+@media screen and (max-width: 480px) {
+  .place:after {
+    display: none; } }
 
 .time {
   color: #919191;
@@ -789,7 +1061,7 @@ The provided mixins are intended to be used with the array-like variables
   background: #f2f2f1; }
 .testimonials__inner {
   text-align: center;
-  padding: 68px 10px 99px; }
+  padding: 92px 10px 99px; }
 
 .author {
   color: #566366;
@@ -812,7 +1084,15 @@ The provided mixins are intended to be used with the array-like variables
   border-radius: 50%;
   width: 10px;
   height: 10px;
-  border: 2px solid #2ecc71; }
+  border: 2px solid #2ecc71;
+  -webkit-transition: background-color 300ms;
+  -moz-transition: background-color 300ms;
+  -spec-transition: background-color 300ms;
+  transition: background-color 300ms; }
+@media screen and (max-width: 768px) {
+  .tab-controls__item {
+    width: 15px;
+    height: 15px; } }
 .tab-controls__item + .tab-controls__item {
   margin-left: 5px; }
 .tab-controls__item:hover {
@@ -915,6 +1195,10 @@ The provided mixins are intended to be used with the array-like variables
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
+  -webkit-transition: color 300ms;
+  -moz-transition: color 300ms;
+  -spec-transition: color 300ms;
+  transition: color 300ms;
   width: 34px;
   height: 34px;
   display: inline-block;
@@ -975,7 +1259,13 @@ The provided mixins are intended to be used with the array-like variables
   margin-bottom: 33px; }
 .form-control-input, .form-control-textarea {
   background: #4b5456;
-  padding: 17px 5px; }
+  padding: 17px 5px;
+  -webkit-transition: background-color 300ms;
+  -moz-transition: background-color 300ms;
+  -spec-transition: background-color 300ms;
+  transition: background-color 300ms; }
+.form-control-input:hover, .form-control-input:focus, .form-control-textarea:hover, .form-control-textarea:focus {
+  background: #3f4748; }
 .form-control-textarea {
   resize: none;
   min-height: 279px;
@@ -997,5 +1287,85 @@ The provided mixins are intended to be used with the array-like variables
   background: #fff; }
 .icon-bar + .icon-bar {
   margin-top: 4px; }
+
+.flexslider {
+  margin: 0;
+  background-color: transparent;
+  border: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+
+.slides__inner {
+  position: relative; }
+
+.slider-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  top: 42.54237%;
+  padding: 0 10px; }
+@media screen and (max-width: 768px) {
+  .slider-content {
+    top: 20%; } }
+.slider-caption {
+  color: #fff;
+  font-size: 3.75em;
+  font-weight: 700;
+  line-height: 0.4;
+  text-transform: uppercase;
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  padding: 29px 0;
+  max-width: 751px;
+  margin-left: auto;
+  margin-right: auto; }
+@media screen and (max-width: 992px) {
+  .slider-caption {
+    font-size: 2.5em;
+    max-width: 503px; } }
+@media screen and (max-width: 768px) {
+  .slider-caption {
+    font-size: 1.25em;
+    padding: 20px 0;
+    max-width: 251px; } }
+@media screen and (max-width: 768px) {
+  .slider-btn {
+    padding: 10px 20px;
+    font-size: 1em; } }
+@media screen and (max-width: 480px) {
+  .slider-btn {
+    padding: 10px;
+    font-size: 0.875em; } }
+
+.touch .flex-control-nav {
+  display: none; }
+
+.flex-control-nav {
+  width: 10px;
+  right: 19%;
+  bottom: 20%;
+  z-index: 2; }
+.flex-control-nav li {
+  display: block;
+  margin: 0; }
+.flex-control-nav li a {
+  width: 10px;
+  height: 10px;
+  border: 2px solid #fff;
+  background: transparent;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  margin-top: 10px; }
+.flex-control-nav li a:hover, .flex-control-nav li a.flex-active {
+  background: #fff; }
 
 /*# sourceMappingURL=main.css.map */
