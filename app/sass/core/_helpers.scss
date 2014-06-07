@@ -128,6 +128,10 @@
   }
 }
 
+@mixin appearance ($value) {
+  @include prefixer(appearance, $value, webkit moz ms o spec);
+}
+
 @mixin noselect {
     -webkit-touch-callout: none;
     @include prefixer(user-select, none, webkit ms);

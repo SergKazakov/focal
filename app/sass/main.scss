@@ -470,6 +470,8 @@ $details: (web: $web-design, graphic: $graphic-design, market: $online-marketing
 		}
 		&:hover .gallery-overlay{
 			@include opacity(1);
+			//ie8
+			@include ie-rgba(#2ba25f, 0.9);
 		}
 	}
 	&__img, &-overlay{
@@ -495,6 +497,13 @@ $details: (web: $web-design, graphic: $graphic-design, market: $online-marketing
 	right: 0;
 	top: 0;
 	bottom: 0;
+	//ie8
+	.lt-ie9 &{
+		visibility: hidden;
+	}
+	.lt-ie9 .gallery__item:hover &{
+		visibility: visible;
+	}
 }
 
 .footer{
@@ -604,6 +613,7 @@ $details: (web: $web-design, graphic: $graphic-design, market: $online-marketing
 		&:hover, &:focus{
 			background: darken(#4b5456, 5%);
 		}
+		@include border-radius(0);
 	}
 	&-textarea{
 		resize: none;
@@ -669,17 +679,16 @@ $details: (web: $web-design, graphic: $graphic-design, market: $online-marketing
 		border-top: 2px solid #fff;
 		border-bottom: 2px solid #fff;
 		padding: 29px 0;
-		max-width: 751px;
-		margin-left: auto;
-		margin-right: auto; 
+		display: inline-block;
 		@include max-screen(992px){
-			font-size: em(40);
-			max-width: 503px;
+			font-size: em(50);
 		}
 		@include max-screen(768px){
-			font-size: em(20);
+			font-size: em(30);
 			padding: 20px 0; 
-			max-width: 251px
+		}
+		@include max-screen(480px){
+			font-size: em(20);
 		}
 	}
 	&-btn{
