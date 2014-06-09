@@ -1027,19 +1027,15 @@ html[xmlns] .slides {
 .place:hover {
   text-decoration: underline;
   color: #5e5e5e; }
-.place:after {
-  content: '/';
-  font-weight: 400;
-  color: #919191;
-  margin-left: 5px; }
-@media screen and (max-width: 480px) {
-  .place:after {
-    display: none; } }
 
 .time {
-  color: #919191;
-  font-weight: 400;
   margin: 10px 0; }
+.time__inner:before {
+  content: '/';
+  margin: 0 5px; }
+@media screen and (max-width: 480px) {
+  .time__inner:before {
+    display: none; } }
 
 .divider {
   height: 1px;
