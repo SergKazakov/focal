@@ -336,21 +336,17 @@ $details: (web: $web-design, graphic: $graphic-design, market: $online-marketing
 		text-decoration: underline;
 		color: darken(#919191, 20%);
 	}
-	&:after{
+}
+
+.time{
+	margin: 10px 0;
+	&__inner:before{
 		content: '/';
-		font-weight: $normal;
-		color: #919191;
-		margin-left: 5px;
+		margin: 0 5px;
 		@include max-screen(480px){
 			display: none;
 		}
 	}
-}
-
-.time{
-	color:  #919191;
-	font-weight: $normal;
-	margin: 10px 0;
 }
 
 .divider{
