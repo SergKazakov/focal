@@ -6,7 +6,7 @@
 @import "core/sprite";
 @import "vendor/fonts";
 @import "vendor/responsive-nav";
-@import "vendor/flexslider";
+@import "vendor/superslides";
 
 // buttons
 
@@ -62,7 +62,12 @@
 // buttons
 
 .main-nav{
-	background: #252e30;
+	@include rgba(#252e30, 0.85);
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 100;
 	&__inner{
 		@extend %container;
 		@extend %clearfix;
@@ -638,32 +643,17 @@ $details: (web: $web-design, graphic: $graphic-design, market: $online-marketing
     }
 }
 
-//flexslider
-
-.flexslider{
-	margin: 0;
-	background-color: transparent;
-	border: 0;
-	@include border-radius(0);
-	@include box-shadow(none);
-}
-
-.slides{
-	&__inner{
-		position: relative;
-	}
-}
-
 .slider{
 	&-content{
+		display: table;
+		width: 100%;
+		height: 100%;
 		position: absolute;
-		left: 0;
-		right: 0;
-		text-align: center;
-		top: percentage(502px/ $container-width);
 		padding: 0 $container-gutter;
-		@include max-screen(768px){
-			top: 20%;
+		&-inner{
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
 		}
 	}
 	&-caption{
@@ -682,6 +672,7 @@ $details: (web: $web-design, graphic: $graphic-design, market: $online-marketing
 		@include max-screen(768px){
 			font-size: em(30);
 			padding: 20px 0; 
+			border: 0;
 		}
 		@include max-screen(480px){
 			font-size: em(20);
@@ -699,29 +690,30 @@ $details: (web: $web-design, graphic: $graphic-design, market: $online-marketing
 	}
 }
 
-.touch .flex-control-nav{
-	display: none;
-}
-
-.flex-control-nav{
+.slides-pagination{
 	width: 10px;
+	position: absolute;
 	right: 19%;
 	bottom: 20%;
 	z-index: 2;
-	li{
+	a{
 		display: block;
-		margin: 0;
-		a{
-			width: 10px;
-			height: 10px;
-			border: 2px solid #fff;
-			background: transparent;
-			@include border-radius(50%);
-			@include box-shadow(none);
-			margin-top: 10px;
-			&:hover, &.flex-active{
-				background:#fff;
-			}
+		width: 10px;
+		height: 10px;
+		border: 2px solid #fff;
+		background: transparent;
+		@include border-radius(50%);
+		@include box-shadow(none);
+		margin-top: 10px;
+		&:hover, &.flex-active{
+			background:#fff;
+		}
+		&.current{
+			background: #fff;
 		}
 	}
+}
+
+.touch .slides-pagination{
+	display: none;
 }

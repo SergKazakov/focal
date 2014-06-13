@@ -24,11 +24,12 @@ $(function() {
 
 
     //slider
-    $('.flexslider').flexslider({
-        'animation': 'fade',
-        'directionNav': false,
-    });
+    var slider=$('#slides');
 
+    slider.superslides({
+        'animation': 'fade',
+        'play': 10000
+    });
 
     //scroll
     $('a[href^=#]').on('click', function() {
